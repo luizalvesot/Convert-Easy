@@ -19,7 +19,7 @@
                         <div class="row justify-content-center">
                             <h4 class="mb-4 text-dark">DÓLAR HOJE</h4>
                         </div>
-                        <?php $value = 5; ?>
+                        <?php $value = 1; ?>
                         <div class="row justify-content-center">
                             <div class="alert alert-primary col-4 m-2 text-center shadow-lg" role="alert">
                                 <h4>Dólar Americano</h4>

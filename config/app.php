@@ -13,7 +13,8 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => 'Convert Easy',
+    'subtitle' => 'Moedas',
 
     /*
     |--------------------------------------------------------------------------
