@@ -17,5 +17,9 @@ Route::get('/', [
     App\Http\Controllers\converteasy\ConvertController::class, 'getMoedaAPI'
 ])->name('index');
 
+Route::get('/euro', [
+    App\Http\Controllers\converteasy\ConvertController::class, 'getMoedaAPIEuro'
+])->name('euro');
+
 Auth::routes();
 
