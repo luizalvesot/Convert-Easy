@@ -1,0 +1,36 @@
+.circle-init{
+    border-radius: 50%; 
+    width: 100px; 
+    height: 100px;
+}
+
+.cot-moeda{
+    font-family: Tahoma; 
+    font-size: 200%; 
+    font-weight: lighter;
+    width: 75%; 
+    box-shadow: 0 0 0 0; 
+    outline: 0;
+    border-style: none;
+    color: rgba(60, 60, 60, 0.87);
+    margin-left: 3%;
+    background-color: transparent;
+    text-align: right;
+}
+
+.cot-moeda:hover{
+    transform: scale(1.1);
+}
+
+.cot-symbol{
+    font-family: Tahoma; 
+    font-size: 208%;
+    font-weight: lighter;
+    color: rgba(73, 73, 73, 0.735);
+}
+
+.cot-moeda-group:hover{
+    background-color: rgba(174, 174, 174, 0.273);
+    color: rgb(54, 54, 54);
+}
+
