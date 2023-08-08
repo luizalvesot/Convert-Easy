@@ -31,7 +31,6 @@ class ConvertController extends Controller
 		$response = curl_exec($curl);
 
 		curl_close($curl);
-		//echo $response;
 	 
 		$obj = json_decode($response);
 
