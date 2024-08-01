@@ -27,7 +27,7 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     @livewireStyles
 </head>
-<body style="background-color: rgba(102, 115, 96, 0.164);">
+<body style="">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
