@@ -3,7 +3,7 @@
         <form class="col-md shadow-sm p-4"> 
             <!-- Linha da imagem da moeda -->
             <div class="row justify-content-center">
-                <div class="p-2 m-2 shadow-lg circle-init" style="background-image:url('https://www.gov.br/agricultura/pt-br/assuntos/relacoes-internacionais/agro-mais-investimentos/imagens/bandeira-dos-estados-unidos.png/@@images/image.png'); background-size: 100% 100%;"></div>
+                <div class="p-2 m-2 shadow-lg circle-init" style="background-image:url('https://static.mundoeducacao.uol.com.br/mundoeducacao/2022/05/bandeira-estados-unidos.jpg'); background-size: 100% 100%;"></div>
             </div>
             <!-- Linha do nome da moeda -->
             <div class="row justify-content-center">
