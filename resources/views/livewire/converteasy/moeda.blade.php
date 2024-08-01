@@ -29,6 +29,12 @@
                     </span>
                 </div>
             </div>
+            <div class="row justify-content-center">
+                <div wire:loading class="bg-warning">
+                    <strong>Calculando... </strong>
+                    <div class="spinner-border spinner-border-sm mx-2 ms-auto text-dark" role="status"></div>
+                </div>
+            </div>
             <div class="row m-4 justify-content-center">
                 <div class="alert alert-dark w-100 my-2" role="alert">
                     <a href="#" class="alert-link">Clique aqui</a> para escolher cotações de outra moeda.
