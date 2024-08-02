@@ -11,51 +11,54 @@
             </div>
             <!-- Linha do select de tipo de conta -->
              <div class="row justify-content-center">
-                <select class="form-select px-4 py-1 border-0 rounded" wire:model="estiloCalculo">
-                    <option value="valueEsquerdo">Calcular dólar para real</option>
-                    <option value="valueDireito">Calcular real para dólar</option>
+                <select class="form-select px-4 py-1 border-0 rounded" wire:model="estiloDeCalculo">
+                    <option value=1>Calcular dólar para real</option>
+                    <option value=2>Calcular real para dólar</option>
                 </select>
              </div>
             <!-- Linha dos valores da moeda -->
             <div class="row m-3 justify-content-center">
                 <div class="m-2 col-sm">
+                    <!-- campo da esquerda -->
                     <span class="row p-2 cot-moeda-group shadow">
                         <span class="cot-symbol">US$</span>
-                        @if($estilo == "valueEsquerdo")
-                            <input class="cot-moeda w-90 bg-light" wire:model.live="valorDigitado" type="text"
-                                value="{{ number_format($valorDigitado, 2, ',', '.') }}" onClick="this.setSelectionRange(0, this.value.length)">
+                        @if($estilo == 1)
+                            @if($valorDigitado != '')
+                                <input class="cot-moeda" wire:model="valorDigitado" type="text" style="background-color: rgb(241, 250, 241);"
+                                    value="{{ number_format($valorDigitado, 2, ',', '.') }}" onClick="this.setSelectionRange(0, this.value.length)">
+                            @else
+                                <input class="cot-moeda" wire:model="valorDigitado" type="text" style="background-color: rgb(241, 250, 241);"
+                                    value="" onClick="this.setSelectionRange(0, this.value.length)">
+                            @endif
                         @else
-                            <input class="cot-moeda w-90" disabled wire:model.live="valorDigitado" type="text"
+                            <input class="cot-moeda" wire:model="valorDigitado" type="text" disabled
                                 value="{{ number_format($valorDigitado, 2, ',', '.') }}" onClick="this.setSelectionRange(0, this.value.length)">
                         @endif
                     </span>
                 </div>
+                <!-- Coluna que mostra vale hoje -->
                 <div class="m-2 mt-4">
                     <span class="text-success font-weight-bold">
                         <b>VALE</b> agora
                     </span>
                 </div>
                 <div class="m-2 col-sm">
+                    <!-- campo da direita -->
                     <span class="row p-2 cot-moeda-group shadow">
                         <span class="cot-symbol">R$</span>
-                        @if($estilo == "valueDireito")
-                            <input class="cot-moeda w-90 bg-light" type="text" 
-                                    value="{{ number_format($precoAPI, 2, ',', '.') }}" onClick="this.setSelectionRange(0, this.value.length)">
+                        @if($estilo == 2)
+                            <input class="cot-moeda w-90 bg-light" type="text" style="background-color: rgb(241, 250, 241);"
+                                    value="{{ number_format($valorCalculado, 2, ',', '.') }}" onClick="this.setSelectionRange(0, this.value.length)">
                         @else
                             <input class="cot-moeda w-90" type="text" disabled
-                                value="{{ number_format($precoAPI, 2, ',', '.') }}" onClick="this.setSelectionRange(0, this.value.length)">
+                                value="{{ number_format($valorCalculado, 2, ',', '.') }}" onClick="this.setSelectionRange(0, this.value.length)">
                         @endif
                     </span>
                 </div>
             </div>
-            <div class="row justify-content-center">
-                <div wire:loading class="bg-success p-2">
-                    <strong>Calculando </strong>
-                    <div class="spinner-border spinner-border-sm mx-2 ms-auto" role="status"></div>
-                </div>
-            </div>
+            <!-- linha que mostra o alert para selecionar outras moedas -->
             <div class="row m-4 justify-content-center">
-                <div class="alert alert-dark w-100 my-2" role="alert">
+                <div class="alert alert-light w-100 my-2" role="alert">
                     <a href="#" class="alert-link">Clique aqui</a> para escolher cotações de outra moeda.
                 </div>
             </div>

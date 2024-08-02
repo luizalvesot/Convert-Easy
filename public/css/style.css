@@ -7,14 +7,14 @@
 .cot-moeda{
     font-family: Tahoma; 
     font-size: 200%; 
-    width: 82%; 
+    width: 70%; 
     box-shadow: 0 0 0 0; 
     outline: 0;
     border-style: none;
     color: rgba(60, 60, 60, 0.87);
     margin-left: 4%;
-    background-color: transparent;
     text-align: right;
+    background-color: transparent;
 }
 
 .cot-symbol{
