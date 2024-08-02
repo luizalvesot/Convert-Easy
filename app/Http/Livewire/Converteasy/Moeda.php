@@ -7,20 +7,34 @@ use App\Modules\Moedas\Moeda as Moedas;
 
 class Moeda extends Component
 {
-    public $moeda_view = 'USD-BRL';
-    public $vlr_moeda = 1.00;
+    public $moedaLocal = 'USD-BRL';
+    public $valorDigitado;
+    public $precoAPI;
+    public $estiloCalculo = "valueEsquerdo";
+
+    public function mount()
+    {
+        $this->precoAPI = (new Moedas)->request($this->moedaLocal);
+        $this->valorDigitado = 1.00;
+    }
+
+    public function calcular()
+    {
+
+    }
 
     public function render()
-    {
-        $vlr_real = (new Moedas)->request($this->moeda_view);
+    { 
+        $estilo = "";
 
-        if($this->vlr_moeda != '')
-        {   
-            $vlr = $this->vlr_moeda * $vlr_real;
-            $result = number_format($vlr, 2, ',', '.');
-            return view('livewire.converteasy.moeda', compact('result'));
+        if($this->estiloCalculo = "valueEsquerdo")
+        {
+            $estilo = "valueEsquerdo";
         } else {
-            return view('livewire.converteasy.moeda');
+            $estilo = "valueDireito";
         }
+        //dd($estilo);
+
+        return view('livewire.converteasy.moeda', compact('estilo'));
     }
 }
