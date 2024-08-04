@@ -10,7 +10,7 @@ class Moeda extends Component
     public $moedaLocal = 'USD-BRL';
     public $precoAPI;
     public $valorDigitado;
-    public $estiloDeCalculo;
+    public $estiloDeCalculo; 
 
     public function mount()
     {
@@ -22,10 +22,22 @@ class Moeda extends Component
     public function render()
     {   
         $estilo = $this->estiloDeCalculo;
+
+        if($estilo == 2)
+        {
+            if($this->valorDigitado != '')
+            {
+                $valorCalculado = $this->precoAPI * $this->valorDigitado;
+                return view('livewire.converteasy.moeda', compact('estilo', 'valorCalculado'));
+            } else{
+                $valorCalculado = 0.00;
+                return view('livewire.converteasy.moeda', compact('estilo', 'valorCalculado'));
+            }
+        }
+
         if($this->valorDigitado != '')
         {
             $valorCalculado = $this->precoAPI * $this->valorDigitado;
-
             return view('livewire.converteasy.moeda', compact('estilo', 'valorCalculado'));
         } else{
             $valorCalculado = 0.00;
