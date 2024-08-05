@@ -8,40 +8,41 @@ use App\Modules\Moedas\Moeda as Moedas;
 class Moeda extends Component
 {
     public $moedaLocal = 'USD-BRL';
-    public $precoAPI;
     public $valorDigitado;
+    public $valorDigitado2;
     public $estiloDeCalculo; 
 
     public function mount()
     {
-        $this->precoAPI = (new Moedas)->request($this->moedaLocal);
+        $this->estiloDeCalculo = "true"; 
         $this->valorDigitado = 1.00;
-        $this->estiloDeCalculo = 1;
+        $this->valorDigitado2 = floatval((new Moedas)->request($this->moedaLocal));
     }
 
     public function render()
     {   
         $estilo = $this->estiloDeCalculo;
+        $valorCalculado = 0.00;
+        $valorCalculado2 = floatval(0);
 
-        if($estilo == 2)
+        if(!empty($this->valorDigitado))
         {
-            if($this->valorDigitado != '')
-            {
-                $valorCalculado = $this->precoAPI * $this->valorDigitado;
-                return view('livewire.converteasy.moeda', compact('estilo', 'valorCalculado'));
-            } else{
-                $valorCalculado = 0.00;
-                return view('livewire.converteasy.moeda', compact('estilo', 'valorCalculado'));
+            if($estilo == "true")
+            {   
+                $valorAPI = (new Moedas)->request($this->moedaLocal);
+                $valorCalculado = $valorAPI * $this->valorDigitado;
+            } else {
+                //dd($estilo);
+                $valorAPI = floatval((new Moedas)->request($this->moedaLocal));
+                $valorCalculado2 = ($this->valorDigitado2) / ($valorAPI);
+                //dd($valorCalculado2);
             }
-        }
-
-        if($this->valorDigitado != '')
-        {
-            $valorCalculado = $this->precoAPI * $this->valorDigitado;
-            return view('livewire.converteasy.moeda', compact('estilo', 'valorCalculado'));
+            return view('livewire.converteasy.moeda', compact('estilo', 'valorCalculado', 'valorCalculado2'));
         } else{
             $valorCalculado = 0.00;
-            return view('livewire.converteasy.moeda', compact('estilo', 'valorCalculado'));
+            $valorCalculado2 = 0.00;
+            return view('livewire.converteasy.moeda', compact('estilo', 'valorCalculado', 'valorCalculado2'));
         }
+        
     }
 }

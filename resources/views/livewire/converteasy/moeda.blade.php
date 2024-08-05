@@ -11,9 +11,9 @@
             </div>
             <!-- Linha do select de tipo de conta -->
              <div class="row justify-content-center">
-                <select class="form-select px-4 py-1 border-0 rounded" wire:model="estiloDeCalculo">
-                    <option value=1>Calcular dólar para real</option>
-                    <option value=2>Calcular real para dólar</option>
+                <select class="form-select px-4 py-1 border-0" wire:model="estiloDeCalculo">
+                    <option value="true">Calcular dólar para real</option>
+                    <option value="false">Calcular real para dólar</option>
                 </select>
              </div>
             <!-- Linha dos valores da moeda -->
@@ -22,7 +22,7 @@
                     <!-- campo da esquerda -->
                     <span class="row p-2 cot-moeda-group shadow">
                         <span class="cot-symbol">US$</span>
-                        @if($estilo == 1)
+                        @if($estilo == "true")
                             @if($valorDigitado != '')
                                 <input class="cot-moeda" wire:model="valorDigitado" type="text" style="background-color: rgb(241, 250, 241);"
                                     value="{{ number_format($valorDigitado, 2, ',', '.') }}" onClick="this.setSelectionRange(0, this.value.length)">
@@ -31,8 +31,8 @@
                                     value="" onClick="this.setSelectionRange(0, this.value.length)">
                             @endif
                         @else
-                            <input class="cot-moeda" wire:model="valorDigitado" type="text" disabled
-                                value="{{ number_format($valorDigitado, 2, ',', '.') }}" onClick="this.setSelectionRange(0, this.value.length)">
+                            <input class="cot-moeda" type="text" disabled value="{{ number_format($valorCalculado2, 2, ',', '.') }}" 
+                                onClick="this.setSelectionRange(0, this.value.length)">
                         @endif
                     </span>
                 </div>
@@ -46,12 +46,17 @@
                     <!-- campo da direita -->
                     <span class="row p-2 cot-moeda-group shadow">
                         <span class="cot-symbol">R$</span>
-                        @if($estilo == 2)
-                            <input class="cot-moeda w-90 bg-light" type="text" style="background-color: rgb(241, 250, 241);"
-                                    value="{{ number_format($valorCalculado, 2, ',', '.') }}" onClick="this.setSelectionRange(0, this.value.length)">
+                        @if($estilo != "true")
+                            @if($valorDigitado2 != '')
+                                <input class="cot-moeda" type="text" wire:model="valorDigitado2" style="background-color: rgb(241, 250, 241);"
+                                    value="{{ number_format($valorDigitado2, 2, ',', '.') }}" onClick="this.setSelectionRange(0, this.value.length)">
+                            @else
+                                <input class="cot-moeda" wire:model="valorDigitado2" type="text" style="background-color: rgb(241, 250, 241);"
+                                    value="" onClick="this.setSelectionRange(0, this.value.length)">
+                            @endif
                         @else
-                            <input class="cot-moeda w-90" type="text" disabled
-                                value="{{ number_format($valorCalculado, 2, ',', '.') }}" onClick="this.setSelectionRange(0, this.value.length)">
+                            <input class="cot-moeda" type="text" disabled value="{{ number_format($valorCalculado, 2, ',', '.') }}" 
+                                onClick="this.setSelectionRange(0, this.value.length)">
                         @endif
                     </span>
                 </div>
